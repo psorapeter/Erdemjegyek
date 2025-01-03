@@ -19,7 +19,7 @@ class Gyerek:
         self.stat = pd.DataFrame
 
     def penzek_frissitese(self, lista):
-        erdemjegy_erteke = {5: 300, 4: 100, 3: -200, 2: -500, 1: -1000}  # jegyek pénzbeni értékei
+        erdemjegy_erteke = {5: 400, 4: 200, 3: -200, 2: -500, 1: -1000}  # jegyek pénzbeni értékei
         jegyek = [int(elem_p[2]) for elem_p in lista]
 
         self.zsebpenz = self.kezdopenz + sum(erdemjegy_erteke.get(jegy, 0) for jegy in jegyek)
@@ -477,7 +477,7 @@ class Window:
                               columns=cols)
             df['Jegy'] = df['Jegy'].astype(int)
             df.to_excel(path, index=False)
-            df.to_excel('jegyek.xlsx', index=False, sheet_name='technikai', startrow=0, startcol=0)
+            df.to_excel('jegyek_24_25.xlsx', index=False, sheet_name='technikai', startrow=0, startcol=0)
         self.df = df
         Mark.df = df[df['Név'] == 'Márk'].drop('Név', axis=1)
         Petra.df = df[df['Név'] == 'Petra'].drop('Név', axis=1)
@@ -1052,7 +1052,7 @@ def check_name_combobox():
 
 
 # Fájl beolvasása
-path = "jegyek_24_45.xlsx"
+path = "jegyek_24_25.xlsx"
 
 # Objektumok létrehozása
 Mark = Gyerek('Márk', 10000)
